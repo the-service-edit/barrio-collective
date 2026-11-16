@@ -80,13 +80,19 @@ h3{font-size:21px;line-height:1.3}
 
 /* ----- The roast board ----- */
 .board{list-style:none;margin:34px 0 0;padding:0;border-top:1px solid var(--rule)}
-.board li{display:grid;grid-template-columns:64px minmax(0,1.05fr) minmax(0,1.25fr) 104px 118px;gap:8px 24px;align-items:center;padding:14px 0;border-bottom:1px solid var(--rule)}
+.board li{display:grid;grid-template-columns:64px minmax(0,1fr) minmax(0,1.1fr) 218px 112px;gap:8px 24px;align-items:center;padding:14px 0;border-bottom:1px solid var(--rule)}
 .board .bag{width:64px;height:64px;background:var(--box)}
 .board .bag img{width:100%;height:100%;object-fit:cover}
 .board .name{font-size:22px;letter-spacing:.5px;color:var(--head);line-height:1.2}
 .board .name button{background:none;border:0;padding:0;letter-spacing:.5px;text-align:left;border-bottom:1px solid var(--head)}
 .board .from{display:block;margin-top:5px;color:#5E6B6B}
 .board .price{font-size:16px;line-height:1.35;white-space:nowrap}
+.sizes{display:flex;flex-wrap:wrap;gap:6px}
+.sizes button{background:transparent;border:1px solid var(--head);padding:9px 9px;font-size:11px;font-weight:400;letter-spacing:1px;line-height:1;white-space:nowrap}
+.sizes button[aria-pressed="true"]{background:var(--head);color:var(--white)}
+.start{margin:18px 0 0;max-width:74ch}
+.start button,.also .name button{background:none;border:0;padding:0;color:var(--head);border-bottom:1px solid var(--head);letter-spacing:inherit;text-align:left}
+.lasts{margin:0 0 18px;font-size:15px;color:#5E6B6B}
 .board .price small{display:block;font-size:13px;color:#5E6B6B}
 .board .btn{justify-self:end;white-space:nowrap}
 .foot-line{margin:22px 0 0;max-width:74ch}
@@ -228,7 +234,7 @@ a.link{text-decoration:none;white-space:nowrap}
   .board .bag{width:56px;height:56px;grid-row:span 2;align-self:start}
   .board .name{grid-column:2 / -1}
   .board .tastes{grid-column:2 / -1}
-  .board .price{grid-column:1 / 3;margin-top:6px}
+  .board .sizes{grid-column:1 / 3;margin-top:8px}
   .board .btn{margin-top:6px}
   .also .board .name{grid-column:2 / -1}
   .also .board .btn{grid-column:1 / -1;justify-self:start}
@@ -285,59 +291,11 @@ a.link{text-decoration:none;white-space:nowrap}
     </section>
 
     <section class="sec" id="board" aria-labelledby="board-h">
-      <p class="note">The shop, on the homepage. Your bag photos, tasting notes where people choose, and a cart so two bags is as easy as one.</p>
+      <p class="note">The shop, on the homepage. Your bag photos, tasting notes where people choose, every size on the row, every name opening its own page, and a cart so two bags is as easy as one.</p>
       <h2 id="board-h">On the roaster this week</h2>
-      <ul class="board">
-        <li>
-          <div class="bag"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/e63f9838-808a-41bb-b513-a4b77562205b/peru+%281%29.png?format=300w" alt=""></div>
-          <div class="name">Seasonal Espresso<span class="from caps tiny">Colombia, Peru, Ethiopia</span></div>
-          <div class="tastes mono">Dark chocolate, vanilla, toasted almond, dried apricot</div>
-          <div class="price">250g $24<small>500g $40, 1kg $75</small></div>
-          <button type="button" class="btn sm" data-add>Add 250g</button>
-        </li>
-        <li>
-          <div class="bag"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1709073313235-1V9WGHPXL4XVVO9ENU0N/ethiopia.png?format=300w" alt=""></div>
-          <div class="name"><button type="button" data-go="coffee">Mr. Bekele Gemeda</button><span class="from caps tiny">Washed Ethiopia</span></div>
-          <div class="tastes mono">Nectarine, kiwi fruit, honey</div>
-          <div class="price">250g $27<small>1kg $78</small></div>
-          <button type="button" class="btn sm" data-add>Add 250g</button>
-        </li>
-        <li>
-          <div class="bag"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/0d444153-2f6f-4514-bced-950370699a1d/guatemala+.png?format=300w" alt=""></div>
-          <div class="name">Finca Calahute<span class="from caps tiny">Washed Guatemala</span></div>
-          <div class="tastes mono">Vanilla, stone fruit, green apple, chocolate</div>
-          <div class="price">250g $27<small>1kg $80</small></div>
-          <button type="button" class="btn sm" data-add>Add 250g</button>
-        </li>
-        <li>
-          <div class="bag"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1707269445795-3M0VC1YA9CS7LHZTBAXK/colombia.png?format=300w" alt=""></div>
-          <div class="name">La Union<span class="from caps tiny">Washed Colombia</span></div>
-          <div class="tastes mono">Dark chocolate, raspberry, stonefruit, black tea</div>
-          <div class="price">250g $24<small>1kg $75</small></div>
-          <button type="button" class="btn sm" data-add>Add 250g</button>
-        </li>
-        <li>
-          <div class="bag"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1707269445795-3M0VC1YA9CS7LHZTBAXK/colombia.png?format=300w" alt=""></div>
-          <div class="name">China Alta<span class="from caps tiny">Washed Colombia</span></div>
-          <div class="tastes mono">Apricot, caramel, vanilla, black tea</div>
-          <div class="price">250g $24<small>1kg $75</small></div>
-          <button type="button" class="btn sm" data-add>Add 250g</button>
-        </li>
-        <li>
-          <div class="bag"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/e4efbd8e-5a07-410a-b603-448ba713d0a7/peru.png?format=300w" alt=""></div>
-          <div class="name">Gallito de las Rocas<span class="from caps tiny">Washed Peru</span></div>
-          <div class="tastes mono">Toasted almond, stone fruit, brown sugar, dark chocolate</div>
-          <div class="price">250g $24<small>1kg $75</small></div>
-          <button type="button" class="btn sm" data-add>Add 250g</button>
-        </li>
-        <li>
-          <div class="bag"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1707269199123-CMKFQQF8L604U2T07MBD/decaf.png?format=300w" alt=""></div>
-          <div class="name">Good Decaf<span class="from caps tiny">Sugar cane decaf, Colombia</span></div>
-          <div class="tastes mono">Honey, caramel, strawberry</div>
-          <div class="price">250g $24<small>500g $42, 1kg $75</small></div>
-          <button type="button" class="btn sm" data-add>Add 250g</button>
-        </li>
-      </ul>
+      <p class="start">Not sure where to start? <button type="button" data-coffee="seasonal">Seasonal Espresso</button> for the machine, <button type="button" data-coffee="calahute">Finca Calahute</button> for milk coffee, <button type="button" data-coffee="chinaalta">China Alta</button> for any brew method, <button type="button" data-coffee="decaf">Good Decaf</button> for no caffeine.</p>
+      <ul class="board" id="shopBoard"></ul>
+      <p class="foot-line">A 250g bag makes about 12 coffees at 20g a cup. A kilo makes about 50 and costs less per cup. Tap a name for the full story.</p>
       <p class="foot-line mono">Whole beans <span class="confirm">to confirm</span>. Roasted on <span class="confirm">days to confirm</span>, posted on <span class="confirm">days to confirm</span>. Postage from <span class="confirm">$ to confirm</span>.</p>
     </section>
 
@@ -421,17 +379,15 @@ a.link{text-decoration:none;white-space:nowrap}
   <div class="wrap">
     <div class="back"><button type="button" class="link" data-go="home" data-anchor="board">Back to shop</button></div>
     <div class="coffee">
-      <div class="photo"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1709073313235-1V9WGHPXL4XVVO9ENU0N/ethiopia.png?format=1000w" alt="A bag of Barrio's Ethiopia"></div>
+      <div class="photo"><img id="cfImg" src="" alt=""></div>
       <div>
         <p class="note">Everything needed to buy sits on the first screen. Today the button is about three screens down on a phone, white on pale grey.</p>
-        <h1>Mr. Bekele Gemeda</h1>
-        <p class="origin caps">Washed Ethiopia</p>
-        <p class="tastes mono">Nectarine<br>Kiwi fruit<br>Honey<br>Silky and perfumed</p>
-        <div class="pick" role="group" aria-label="Weight" id="sizePick">
-          <button type="button" aria-pressed="true" data-size="250g" data-price="27">250g $27</button>
-          <button type="button" aria-pressed="false" data-size="1kg" data-price="78">1kg $78</button>
-        </div>
-        <button type="button" class="btn" id="coffeeAdd" data-add>Add 250g to cart</button>
+        <h1 id="cfName"></h1>
+        <p class="origin caps" id="cfOrigin"></p>
+        <p class="tastes mono" id="cfNotes"></p>
+        <div class="pick" role="group" aria-label="Weight" id="sizePick"></div>
+        <p class="lasts" id="cfLasts"></p>
+        <button type="button" class="btn" id="coffeeAdd" data-add>Add to cart</button>
         <p class="or"><button type="button" class="link" data-go="subscribe">Or get a fresh bag every fortnight</button></p>
         <p class="practical mono">Whole beans <span class="confirm">to confirm</span>. Roasted on <span class="confirm">days to confirm</span>, posted on <span class="confirm">days to confirm</span>. Postage from <span class="confirm">$ to confirm</span>.</p>
       </div>
@@ -441,38 +397,17 @@ a.link{text-decoration:none;white-space:nowrap}
       <div class="story">
         <div>
           <p class="note">Your story stays word for word, in the same typewriter face it has today. The text here is a summary standing in for it.</p>
-          <h2 id="story-h">"All Sam's coffee wishes have come true!"</h2>
-          <p class="mono">A washed, single producer lot from Ethiopia, and a big deal at Barrio. Ethiopian coffee can usually be traced only as far as the washing station, where many small growers deliver together.</p>
-          <p class="mono">Cafe Imports' Single Farmer Project changed that. Mr Bekele Gemeda farms 6.5 hectares in Worka Village with several of his 11 children, and this coffee showed well enough in the cup to be sold as a lot of its own.</p>
+          <h2 id="story-h"></h2>
+          <div id="cfStory"></div>
         </div>
-        <dl class="facts mono">
-          <div><dt>Producer</dt><dd>Mr. Bekele Gemeda</dd></div>
-          <div><dt>Place</dt><dd>Worka Village, Ethiopia</dd></div>
-          <div><dt>Process</dt><dd>Washed</dd></div>
-          <div><dt>V60, one big mug</dt><dd>20g coffee ground coarse, 350g water. Bloom with 60g, then pour in stages.</dd></div>
-        </dl>
+        <dl class="facts mono" id="cfFacts"></dl>
       </div>
     </section>
 
     <section class="sec" aria-labelledby="also-h">
       <p class="note">Two more coffees, so nobody leaves with one bag for lack of an idea.</p>
       <h2 id="also-h">Also on the shelf</h2>
-      <div class="also">
-        <ul class="board">
-          <li>
-            <div class="bag"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/0d444153-2f6f-4514-bced-950370699a1d/guatemala+.png?format=300w" alt=""></div>
-            <div class="name">Finca Calahute<span class="from caps tiny">Washed Guatemala</span></div>
-            <button type="button" class="btn sm" data-add>Add 250g $27</button>
-          </li>
-        </ul>
-        <ul class="board">
-          <li>
-            <div class="bag"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1707269445795-3M0VC1YA9CS7LHZTBAXK/colombia.png?format=300w" alt=""></div>
-            <div class="name">China Alta<span class="from caps tiny">Washed Colombia</span></div>
-            <button type="button" class="btn sm" data-add>Add 250g $24</button>
-          </li>
-        </ul>
-      </div>
+      <div class="also" id="cfAlso"></div>
     </section>
   </div>
 </main>
@@ -704,6 +639,52 @@ a.link{text-decoration:none;white-space:nowrap}
     var target = anchor ? document.getElementById(anchor) : null;
     if (target) target.scrollIntoView(); else window.scrollTo(0, 0);
   }
+  var COFFEES = [{"key": "seasonal", "name": "Seasonal Espresso", "origin": "Colombia, Peru, Ethiopia", "img": "https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/e63f9838-808a-41bb-b513-a4b77562205b/peru+%281%29.png", "alt": "A bag of Barrio's Seasonal Espresso", "notes": ["Dark chocolate", "Vanilla", "Toasted almond", "Dried apricot"], "feel": "Decadent and satisfying", "sizes": [["250g", 24], ["500g", 40], ["1kg", 75]], "head": "Winter No. 2 2026", "story": ["The base is La Union, from a small town in Nariño, Colombia, for sweetness and rich chocolate. A small producer lot from Peru, Gallito de las Rocas, brings texture and a choc hazelnut note.", "On top sits a washed grade 1 Chebega from Yirgacheffe, Ethiopia, which lifts the aromatics and the soft fruit."], "facts": [["Blend", "Winter No. 2 2026"], ["Coffees", "La Union, Colombia. Gallito de las Rocas, Peru. Chebega, Ethiopia."], ["Espresso", "20g of coffee in, 60ml out, in 25 to 30 seconds."]]}, {"key": "bekele", "name": "Mr. Bekele Gemeda", "origin": "Washed Ethiopia", "img": "https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1709073313235-1V9WGHPXL4XVVO9ENU0N/ethiopia.png", "alt": "A bag of Barrio's Ethiopia", "notes": ["Nectarine", "Kiwi fruit", "Honey"], "feel": "Silky and perfumed", "sizes": [["250g", 27], ["1kg", 78]], "head": "\"All Sam's coffee wishes have come true!\"", "story": ["A washed, single producer lot from Ethiopia, and a big deal at Barrio. Ethiopian coffee can usually be traced only as far as the washing station, where many small growers deliver together.", "Cafe Imports' Single Farmer Project changed that. Mr Bekele Gemeda farms 6.5 hectares in Worka Village with several of his 11 children, and this coffee showed well enough in the cup to be sold as a lot of its own."], "facts": [["Producer", "Mr. Bekele Gemeda"], ["Place", "Worka Village, Ethiopia"], ["Process", "Washed"], ["V60, one big mug", "20g coffee ground coarse, 350g water. Bloom with 60g, then pour in stages."]]}, {"key": "calahute", "name": "Finca Calahute", "origin": "Washed Guatemala", "img": "https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/0d444153-2f6f-4514-bced-950370699a1d/guatemala+.png", "alt": "A bag of Barrio's Guatemala", "notes": ["Vanilla", "Stone fruit", "Green apple", "Chocolate"], "feel": "Smooth and pleasing", "sizes": [["250g", 27], ["1kg", 80]], "head": "\"This is a perfect Barrio coffee!\"", "story": ["Calahute has been in the Anzueto family since the 1950s and is run today by third-generation producer Alfonso Anzueto. The 220 hectare farm sits at 1,300 metres on El Tapón Mountain in Huehuetenango. This is the sixth year Barrio has bought it.", "As a milky espresso it gives milk chocolate sweetness and a biscuit texture. Black, it is clean apple and vanilla with a mild acidity."], "facts": [["Producer", "Alfonso Anzueto"], ["Place", "Huehuetenango, Guatemala, 1,300m"], ["Process", "Washed"], ["Varieties", "Bourbon and Caturra"]]}, {"key": "launion", "name": "La Union", "origin": "Washed Colombia", "img": "https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1707269445795-3M0VC1YA9CS7LHZTBAXK/colombia.png", "alt": "A bag of Barrio's Colombia", "notes": ["Dark chocolate", "Raspberry", "Stonefruit", "Black tea"], "feel": "", "sizes": [["250g", 24], ["1kg", 75]], "head": "\"This is where it all began for us.\"", "story": ["The very first sacks Barrio bought, at the beginning of 2015, came from the little town of La Union in Nariño, Colombia.", "It has what Barrio loves about Nariño coffee: chocolate and fresh fruit, tea and floral notes, complex acidity and a syrupy texture."], "facts": [["Place", "La Union, Nariño, Colombia"], ["Process", "Washed"]]}, {"key": "chinaalta", "name": "China Alta", "origin": "Washed Colombia", "img": "https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1707269445795-3M0VC1YA9CS7LHZTBAXK/colombia.png", "alt": "A bag of Barrio's Colombia", "notes": ["Apricot", "Caramel", "Vanilla", "Black tea"], "feel": "", "sizes": [["250g", 24], ["1kg", 75]], "head": "Seven smallholders above the Río La China", "story": ["Grown at 1,800 to 2,000 metres near Ibagué in Tolima by seven smallholders farming about three hectares each. Caturra, Colombia and Castillo, hand-picked and washed with water from the Río La China.", "Balanced and bright, with dessert-like sweetness, stone fruit and a little floral character. It suits every brew method, black or with milk."], "facts": [["Producers", "Seven smallholders"], ["Place", "China Alta, Tolima, Colombia, 1,800 to 2,000m"], ["Process", "Washed"], ["Varieties", "Caturra, Colombia and Castillo"]]}, {"key": "gallito", "name": "Gallito de las Rocas", "origin": "Washed Peru", "img": "https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/e4efbd8e-5a07-410a-b603-448ba713d0a7/peru.png", "alt": "A bag of Barrio's Peru", "notes": ["Toasted almond", "Stone fruit", "Brown sugar", "Dark chocolate"], "feel": "Sweet and satisfying", "sizes": [["250g", 24], ["1kg", 75]], "head": "Named for a bird worth looking up", "story": ["This lot comes from 40 small producers in San Ignacio, Cajamarca, in northern Peru. It was pulped the day it was picked, fermented for around 30 hours and dried for 12 to 20 days.", "The growers live beside conservation areas that are home to the gallito de las rocas, an endangered bird that spreads native seeds and gives the coffee its name."], "facts": [["Producers", "40 small producers"], ["Place", "San Ignacio, Cajamarca, Peru"], ["Process", "Washed"]]}, {"key": "decaf", "name": "Good Decaf", "origin": "Sugar cane decaf, Colombia", "img": "https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1707269199123-CMKFQQF8L604U2T07MBD/decaf.png", "alt": "A bag of Barrio's decaf", "notes": ["Honey", "Caramel", "Strawberry"], "feel": "", "sizes": [["250g", 24], ["500g", 42], ["1kg", 75]], "head": "\"Yes this decaf is delicious!\"", "story": ["A sugar cane process decaf from producers in Popayan, processed in Caldas, Colombia. The raw coffee is steamed open, then washed with a compound derived from sugar cane that binds to the caffeine.", "Good as espresso, with milk, or as a rich mug of filter."], "facts": [["Coffee", "Popayan Reserve"], ["Place", "Cauca, Colombia"], ["Process", "Sugar cane decaf"]]}];
+  function coffee(key){ return COFFEES.filter(function(c){ return c.key === key; })[0] || COFFEES[0]; }
+  function esc(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+  function sizeButtons(c){
+    return c.sizes.map(function(z, n){
+      return '<button type="button" aria-pressed="' + (n === 0 ? 'true' : 'false') + '" data-size="' + z[0] + '" data-price="' + z[1] + '">' + z[0] + ' $' + z[1] + '</button>';
+    }).join('');
+  }
+  function boardRow(c, short){
+    return '<li><div class="bag"><img src="' + c.img + '?format=300w" alt=""></div>' +
+      '<div class="name"><button type="button" data-coffee="' + c.key + '">' + esc(c.name) + '</button><span class="from caps tiny">' + esc(c.origin) + '</span></div>' +
+      (short ? '<button type="button" class="btn sm" data-add>Add 250g $' + c.sizes[0][1] + '</button>'
+             : '<div class="tastes mono">' + esc(c.notes.join(', ').toLowerCase().replace(/^./, function(m){ return m.toUpperCase(); })) + '</div>' +
+               '<div class="sizes" role="group" aria-label="Size of ' + esc(c.name) + '">' + sizeButtons(c) + '</div>' +
+               '<button type="button" class="btn sm" data-add>Add ' + c.sizes[0][0] + '</button>') + '</li>';
+  }
+  function lasts(c, size, price){
+    var grams = size === '1kg' ? 1000 : parseInt(size, 10);
+    var bags = grams / 250, saving = Math.round(bags * c.sizes[0][1] - price);
+    var words = {2: 'two', 4: 'four'};
+    return 'Makes about ' + Math.floor(grams / 20) + ' coffees at 20g a cup.' +
+      (bags > 1 && saving > 0 ? ' $' + saving + ' less than ' + words[bags] + ' 250g bags.' : '');
+  }
+  function showCoffee(key){
+    var c = coffee(key);
+    document.getElementById('cfImg').src = c.img + '?format=1000w';
+    document.getElementById('cfImg').alt = c.alt;
+    document.getElementById('cfName').textContent = c.name;
+    document.getElementById('cfOrigin').textContent = c.origin;
+    document.getElementById('cfNotes').innerHTML = c.notes.concat(c.feel ? [c.feel] : []).map(esc).join('<br>');
+    var pick = document.getElementById('sizePick');
+    pick.innerHTML = sizeButtons(c);
+    pick.setAttribute('data-coffee-key', c.key);
+    document.getElementById('coffeeAdd').textContent = 'Add ' + c.sizes[0][0] + ' to cart';
+    document.getElementById('cfLasts').textContent = lasts(c, c.sizes[0][0], c.sizes[0][1]);
+    document.getElementById('story-h').textContent = c.head;
+    document.getElementById('cfStory').innerHTML = c.story.map(function(t){ return '<p class="mono">' + esc(t) + '</p>'; }).join('');
+    document.getElementById('cfFacts').innerHTML = c.facts.map(function(f){ return '<div><dt>' + esc(f[0]) + '</dt><dd>' + esc(f[1]) + '</dd></div>'; }).join('');
+    var at = COFFEES.indexOf(c);
+    document.getElementById('cfAlso').innerHTML = [1, 2].map(function(step){
+      return '<ul class="board">' + boardRow(COFFEES[(at + step) % COFFEES.length], true) + '</ul>';
+    }).join('');
+    go('coffee');
+  }
+  document.getElementById('shopBoard').innerHTML = COFFEES.map(function(c){ return boardRow(c, false); }).join('');
+
   function press(group, chosen){
     group.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed', b === chosen ? 'true' : 'false'); });
   }
@@ -726,6 +707,16 @@ a.link{text-decoration:none;white-space:nowrap}
     if (ev.target.closest('[data-taste]')) { document.getElementById('tasteTick').checked = true; }
 
 
+    var open = ev.target.closest('[data-coffee]');
+    if (open) { showCoffee(open.getAttribute('data-coffee')); return; }
+
+    var rowSize = ev.target.closest('.sizes button');
+    if (rowSize) {
+      press(rowSize.parentNode, rowSize);
+      rowSize.closest('li').querySelector('[data-add]').textContent = 'Add ' + rowSize.getAttribute('data-size');
+      return;
+    }
+
     var add = ev.target.closest('[data-add]');
     if (add) {
       var count = document.getElementById('cartCount');
@@ -741,6 +732,7 @@ a.link{text-decoration:none;white-space:nowrap}
     if (size) {
       press(size.parentNode, size);
       document.getElementById('coffeeAdd').textContent = 'Add ' + size.getAttribute('data-size') + ' to cart';
+      document.getElementById('cfLasts').textContent = lasts(coffee(size.parentNode.getAttribute('data-coffee-key')), size.getAttribute('data-size'), Number(size.getAttribute('data-price')));
       return;
     }
 
