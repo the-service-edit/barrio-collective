@@ -48,6 +48,8 @@ body.notes .note{display:block}
 .btn:hover{background:#000}
 .btn.sm{padding:11px 16px;font-size:11px}
 .btn[disabled]{opacity:.55;cursor:default}
+.btn.ghost{background:transparent;color:var(--head)}
+.btn.ghost:hover{background:var(--head);color:var(--white)}
 .mono{font-family:var(--mono);font-size:14px;font-weight:300;line-height:1.65}
 
 /* ----- Header ----- */
@@ -188,6 +190,7 @@ h3{font-size:21px;line-height:1.3}
 .sub{margin:44px 0 0;font-size:12px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:#5E6B6B}
 .sub + .pour{margin-top:28px}
 .sub + .plain{margin-top:14px}
+.sub + .board{margin-top:16px}
 .office{margin:16px 0 0;max-width:30ch;font-size:clamp(21px,2.4vw,25px);line-height:1.45;letter-spacing:.3px;color:var(--head)}
 .said{margin:64px 0 0;padding:0}
 .said p{margin:0;max-width:22ch;font-size:clamp(25px,3.1vw,33px);line-height:1.32;letter-spacing:.3px;color:var(--head)}
@@ -293,6 +296,26 @@ a.link{text-decoration:none;white-space:nowrap}
       <h2 id="board-h">On the roaster this week</h2>
       <p class="start">Not sure where to start? <button type="button" data-coffee="seasonal">Seasonal Espresso</button> for the machine, <button type="button" data-coffee="calahute">Finca Calahute</button> for milk coffee, <button type="button" data-coffee="chinaalta">China Alta</button> for any brew method, <button type="button" data-coffee="decaf">Good Decaf</button> for no caffeine.</p>
       <ul class="board" id="shopBoard"></ul>
+
+      <p class="note" style="margin-top:44px">A sold-out product still does a job here: it says where to get one today and takes an email for the restock. Today each cup listing is a dead end.</p>
+      <h3 class="sub">Cups, handmade by Sawpit Studios</h3>
+      <ul class="board cups">
+        <li>
+          <div class="bag"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1688430437324-WF7R1EGFELE40OKDNRDO/BARRIO_pewpewstudio_230630__+56_LR.jpg?format=300w" alt=""></div>
+          <div class="name">Sawpit Batchy Mug<span class="from caps tiny">Batch brew mug</span></div>
+          <div class="tastes mono">Holds about 250ml. Each one is handmade and slightly different.</div>
+          <div class="price">$50<small>Sold out online</small></div>
+          <button type="button" class="btn sm ghost" data-go="home" data-anchor="signup">Tell me</button>
+        </li>
+        <li>
+          <div class="bag"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1688430126608-MN8JFPCG0S597D82ODMV/BARRIO_pewpewstudio_230630__+58_LR.jpg?format=300w" alt=""></div>
+          <div class="name">Sawpit Flatty Cup<span class="from caps tiny">Our standard coffee cup</span></div>
+          <div class="tastes mono">Each one is handmade and slightly different.</div>
+          <div class="price">$50<small>Sold out online</small></div>
+          <button type="button" class="btn sm ghost" data-go="home" data-anchor="signup">Tell me</button>
+        </li>
+      </ul>
+      <p class="foot-line">Sold out online. <span class="confirm">On the shelf at Braddon, to confirm</span>. "Tell me" takes your email and sends one note when they're back.</p>
       <p class="foot-line mono">Whole beans <span class="confirm">to confirm</span>. Roasted on <span class="confirm">days to confirm</span>, posted on <span class="confirm">days to confirm</span>. Postage from <span class="confirm">$ to confirm</span>.</p>
     </section>
 
@@ -357,7 +380,7 @@ a.link{text-decoration:none;white-space:nowrap}
             <li><div><b>Sawpit cups are back soon</b><span>Join the list and you'll hear first</span></div><div class="bag"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1688430437324-WF7R1EGFELE40OKDNRDO/BARRIO_pewpewstudio_230630__+56_LR.jpg?format=300w" alt=""></div></li>
           </ul>
         </div>
-        <div class="signup">
+        <div class="signup" id="signup">
           <h2>New coffees and cup restocks, first</h2>
           <p>One short email when something lands. Nothing else.</p>
           <div class="row">
