@@ -392,6 +392,23 @@ a.link{text-decoration:none;white-space:nowrap}
   .trio{order:-1}
   .tiles .suit{font-size:13px}
 }
+
+/* ----- Rating and one review, under the first buy button ----- */
+.proof{background:#1C1C1C;color:#DCE3E3;padding:30px 0}
+.proof .note{color:#D6CCBD;border-left-color:#8F8273;margin-bottom:22px}
+.proof-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:18px 56px;align-items:center}
+.score{display:flex;align-items:center;gap:16px}
+.score b{font-weight:300;font-size:50px;line-height:1;color:var(--white);letter-spacing:0}
+.score span{max-width:20ch;font-size:13px;line-height:1.4;color:#AEBBBB}
+.proof blockquote{margin:0}
+.proof blockquote p{margin:0;font-size:clamp(19px,2vw,23px);line-height:1.35;color:var(--white);letter-spacing:.2px}
+.proof blockquote footer{margin-top:6px;font-size:13px;color:#AEBBBB}
+.proof .confirm{color:#A9D6D6;border-bottom-color:#A9D6D6}
+@media (max-width:820px){
+  .proof{padding:26px 0 30px}
+  .proof-row{grid-template-columns:minmax(0,1fr);gap:18px}
+  .proof-row .link{justify-self:start}
+}
 </style>
 </head>
 <body>
@@ -435,6 +452,20 @@ a.link{text-decoration:none;white-space:nowrap}
       <p class="feat-fine">Also in 1kg, $78.</p>
     </div>
     <div class="feature-photo"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1709073313235-1V9WGHPXL4XVVO9ENU0N/ethiopia.png?format=1500w" alt="A bag of Barrio's Ethiopia"></div>
+  </section>
+
+  <section class="proof" aria-label="What people say about the coffee">
+    <div class="wrap">
+      <p class="note">Your Google rating and one review, straight under the first buy button. Reviews are other people's words, so the rest are yours to choose: pick three or four about the coffee, ask each reviewer, or use Google's own reviews block.</p>
+      <div class="proof-row">
+        <div class="score"><b>4.5</b><span>out of 5, from 463 Google reviews of the Braddon bar</span></div>
+        <blockquote>
+          <p>&ldquo;One of, if not the best coffee I have had in Canberra!&rdquo;</p>
+          <footer>Officially LTK, Google review. <span class="confirm">ask before using</span></footer>
+        </blockquote>
+        <a class="link light" href="https://www.google.com/maps/search/?api=1&amp;query=Barrio+Collective+Coffee+Braddon" target="_blank" rel="noopener">Read the reviews</a>
+      </div>
+    </div>
   </section>
 
   <section class="band" id="board" aria-labelledby="board-h">
