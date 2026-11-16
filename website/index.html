@@ -177,7 +177,9 @@ h3{font-size:21px;line-height:1.3}
 .pour .tile{height:46px;object-fit:cover;filter:brightness(1.14) contrast(1.35);mix-blend-mode:multiply}
 .pour .rr{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:700;font-size:21px;line-height:1;letter-spacing:-.02em;text-transform:uppercase;white-space:nowrap;color:#E38801}
 .pour-link{margin:40px 0 56px}
-@media (max-width:520px){.pour{grid-template-columns:repeat(2,minmax(0,1fr));gap:38px 30px}}
+.pour.wide{grid-template-columns:repeat(5,minmax(0,1fr));gap:56px 40px;margin:40px 0 46px}
+@media (max-width:900px){.pour.wide{grid-template-columns:repeat(3,minmax(0,1fr));gap:44px 30px}}
+@media (max-width:520px){.pour,.pour.wide{grid-template-columns:repeat(2,minmax(0,1fr));gap:38px 30px}}
 .max{background:var(--box);padding:40px 36px}
 .max .phone{font-size:30px;letter-spacing:1px;color:var(--head);margin:14px 0 4px}
 .form{display:grid;gap:14px;margin-top:26px}
@@ -342,9 +344,20 @@ h3{font-size:21px;line-height:1.3}
     </section>
 
     <section class="sec" aria-labelledby="pour-h">
-      <p class="note">Your best proof, given room. It sells wholesale without a sales pitch.</p>
+      <p class="note">Your best proof, given room: the venues in their own logos. It sells wholesale without a sales pitch.</p>
       <h2 id="pour-h">Pouring Barrio</h2>
-      <p class="venues">Rebel Rebel<span>,</span> Ainslie IGA<span>,</span> Pilot<span>,</span> Sandoochie<span>,</span> Dada<span>,</span> Intra<span>,</span> Cork Street Cafe<span>,</span> Under Bakery<span>,</span> Such and Such<span>,</span> Saint Elmo<span>,</span> Bond Barista<span>.</span></p>
+      <ul class="pour wide">
+        <li><span class="rr" role="img" aria-label="Rebel Rebel">Rebel Rebel</span></li>
+        <li><img style="--w:128px;--ml:-9px" src="https://ainslieiga.com.au/img/logo/logo.svg" alt="Ainslie IGA" loading="lazy"></li>
+        <li><img style="--w:158px;--ml:-14px" src="https://images.squarespace-cdn.com/content/v1/66c6fb2a9d2d8401e22655c9/07d5ae90-519c-4e3d-abd1-03b92303916a/Pilot+Logo+Black+%28no+background%29.png?format=500w" alt="Pilot" loading="lazy"></li>
+        <li><img style="--w:140px" src="https://sandoochie.com.au/wp-content/themes/sandoochie/assets/logo_green.png" alt="Sandoochie" loading="lazy"></li>
+        <li><img class="tile" style="--w:112px;--ml:-14px" src="https://dadarestaurant.com.au/uploads/b/3838b740-63a0-11ec-8a23-55a0dbb222f3/icon_180x180_ios_NTE3Nj.png?width=180" alt="Dada" loading="lazy"></li>
+        <li><img style="--w:62px" src="https://intracbr.com.au/app/themes/carbonate/assets/dist/img/logo_eye.svg" alt="Intra" loading="lazy"></li>
+        <li><img style="--w:150px" src="logos/cork-street-cafe.png" alt="Cork Street Cafe" loading="lazy"></li>
+        <li><img style="--w:98px" src="https://under-bakery.com/wp-content/themes/carbonate/assets/dist/img/header__logo__dark.svg" alt="Under Bakery" loading="lazy"></li>
+        <li><img style="--w:170px;--ml:-16px" src="https://images.squarespace-cdn.com/content/v1/65a0a0f85c28b1121e06c439/126818cf-54f7-4568-9128-d0ad3a436fc2/SUCHANDSUCH_Logo_Green_RGB.png?format=500w" alt="Such and Such" loading="lazy"></li>
+        <li><img style="--w:92px" src="logos/saint-elmo.png" alt="Saint Elmo" loading="lazy"></li>
+      </ul>
       <button type="button" class="link" data-go="wholesale">Want it on your bar? Talk to Max</button>
     </section>
 
