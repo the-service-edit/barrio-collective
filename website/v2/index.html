@@ -367,6 +367,14 @@ a.link{text-decoration:none;white-space:nowrap}
   .feature.product h1,.feature.wordy h1{font-size:38px}
   .feature .back{margin-bottom:22px}
 }
+
+/* ----- Venue logos sit quieter on phones ----- */
+@media (max-width:520px){
+  .pour,.pour.wide{grid-template-columns:repeat(3,minmax(0,1fr));gap:26px 18px}
+  .pour img,.where .mark img{width:min(calc(var(--w,130px) * .6),100%);margin-left:calc(var(--ml,0px) * .6)}
+  .pour .rr,.where .rr{font-size:13px}
+  .where .mark{margin-bottom:4px}
+}
 </style>
 </head>
 <body>
@@ -486,7 +494,7 @@ a.link{text-decoration:none;white-space:nowrap}
         <li><img style="--w:128px;--ml:-9px" src="https://ainslieiga.com.au/img/logo/logo.svg" alt="Ainslie IGA" loading="lazy"></li>
         <li><img style="--w:158px;--ml:-14px" src="https://images.squarespace-cdn.com/content/v1/66c6fb2a9d2d8401e22655c9/07d5ae90-519c-4e3d-abd1-03b92303916a/Pilot+Logo+Black+%28no+background%29.png?format=500w" alt="Pilot" loading="lazy"></li>
         <li><img style="--w:140px" src="https://sandoochie.com.au/wp-content/themes/sandoochie/assets/logo_green.png" alt="Sandoochie" loading="lazy"></li>
-        <li><img class="tile" style="--w:112px;--ml:-14px" src="https://dadarestaurant.com.au/uploads/b/3838b740-63a0-11ec-8a23-55a0dbb222f3/icon_180x180_ios_NTE3Nj.png?width=180" alt="Dada" loading="lazy"></li>
+        <li><img style="--w:88px" src="../logos/dada.png" alt="Dada" loading="lazy"></li>
         <li><img style="--w:62px" src="https://intracbr.com.au/app/themes/carbonate/assets/dist/img/logo_eye.svg" alt="Intra" loading="lazy"></li>
         <li><img style="--w:150px" src="../logos/cork-street-cafe.png" alt="Cork Street Cafe" loading="lazy"></li>
         <li><img style="--w:98px" src="https://under-bakery.com/wp-content/themes/carbonate/assets/dist/img/header__logo__dark.svg" alt="Under Bakery" loading="lazy"></li>
@@ -662,7 +670,7 @@ a.link{text-decoration:none;white-space:nowrap}
             <ul class="pour">
               <li><span class="rr" role="img" aria-label="Rebel Rebel">Rebel Rebel</span></li>
               <li><img style="--w:158px;--ml:-14px" src="https://images.squarespace-cdn.com/content/v1/66c6fb2a9d2d8401e22655c9/07d5ae90-519c-4e3d-abd1-03b92303916a/Pilot+Logo+Black+%28no+background%29.png?format=500w" alt="Pilot" loading="lazy"></li>
-              <li><img class="tile" style="--w:112px;--ml:-14px" src="https://dadarestaurant.com.au/uploads/b/3838b740-63a0-11ec-8a23-55a0dbb222f3/icon_180x180_ios_NTE3Nj.png?width=180" alt="Dada" loading="lazy"></li>
+              <li><img style="--w:88px" src="../logos/dada.png" alt="Dada" loading="lazy"></li>
               <li><img style="--w:170px;--ml:-16px" src="https://images.squarespace-cdn.com/content/v1/65a0a0f85c28b1121e06c439/126818cf-54f7-4568-9128-d0ad3a436fc2/SUCHANDSUCH_Logo_Green_RGB.png?format=500w" alt="Such and Such" loading="lazy"></li>
             </ul>
             <h3 class="sub">What you get</h3>
@@ -762,7 +770,7 @@ a.link{text-decoration:none;white-space:nowrap}
         <li><div class="mark"><img style="--w:128px;--ml:-9px" src="https://ainslieiga.com.au/img/logo/logo.svg" alt="Ainslie IGA" loading="lazy"></div><div><b>Ainslie IGA</b><span class="kind">Supermarket</span></div><div class="burb">Ainslie</div><a class="link" href="https://ainslieiga.com.au" target="_blank" rel="noopener">Their site</a></li>
         <li><div class="mark"><img style="--w:158px;--ml:-14px" src="https://images.squarespace-cdn.com/content/v1/66c6fb2a9d2d8401e22655c9/07d5ae90-519c-4e3d-abd1-03b92303916a/Pilot+Logo+Black+%28no+background%29.png?format=500w" alt="Pilot" loading="lazy"></div><div><b>Pilot</b><span class="kind">Restaurant</span></div><div class="burb">Ainslie</div><a class="link" href="https://pilotrestaurant.com" target="_blank" rel="noopener">Their site</a></li>
         <li><div class="mark"><img style="--w:140px" src="https://sandoochie.com.au/wp-content/themes/sandoochie/assets/logo_green.png" alt="Sandoochie" loading="lazy"></div><div><b>Sandoochie</b><span class="kind">Sandwich shop</span></div><div class="burb">No Name Lane, Canberra City</div><a class="link" href="https://sandoochie.com.au" target="_blank" rel="noopener">Their site</a></li>
-        <li><div class="mark"><img class="tile" style="--w:112px;--ml:-14px" src="https://dadarestaurant.com.au/uploads/b/3838b740-63a0-11ec-8a23-55a0dbb222f3/icon_180x180_ios_NTE3Nj.png?width=180" alt="Dada" loading="lazy"></div><div><b>Dada</b><span class="kind">Restaurant</span></div><div class="burb">Phillip</div><a class="link" href="https://dadarestaurant.com.au" target="_blank" rel="noopener">Their site</a></li>
+        <li><div class="mark"><img style="--w:88px" src="../logos/dada.png" alt="Dada" loading="lazy"></div><div><b>Dada</b><span class="kind">Restaurant</span></div><div class="burb">Phillip</div><a class="link" href="https://dadarestaurant.com.au" target="_blank" rel="noopener">Their site</a></li>
         <li><div class="mark"><img style="--w:62px" src="https://intracbr.com.au/app/themes/carbonate/assets/dist/img/logo_eye.svg" alt="Intra" loading="lazy"></div><div><b>Intra</b><span class="kind">Coffee store</span></div><div class="burb">Campbell</div><a class="link" href="https://intracbr.com.au" target="_blank" rel="noopener">Their site</a></li>
         <li><div class="mark"><img style="--w:150px" src="../logos/cork-street-cafe.png" alt="Cork Street Cafe" loading="lazy"></div><div><b>Cork Street Cafe</b><span class="kind">Cafe and pizza</span></div><div class="burb">Gundaroo</div><a class="link" href="https://corkstreetcafe.com" target="_blank" rel="noopener">Their site</a></li>
         <li><div class="mark"><img style="--w:98px" src="https://under-bakery.com/wp-content/themes/carbonate/assets/dist/img/header__logo__dark.svg" alt="Under Bakery" loading="lazy"></div><div><b>Under Bakery</b><span class="kind">Bakery</span></div><div class="burb">Mawson and Dairy Road</div><a class="link" href="https://under-bakery.com" target="_blank" rel="noopener">Their site</a></li>
