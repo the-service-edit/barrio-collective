@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Website concept for Barrio Collective, by The Service Edit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* Every value below was measured on barriocollective.com on 16 Nov 2026:
+   page #F0F4F4, text #263333, headings #272727, links #245959,
+   Source Sans Pro 300 for text and headings (1px tracking on headings),
+   12px / 2px-tracked capitals for the menu, system monospace for coffee stories. */
+:root{
+  --paper:#F0F4F4; --ink:#263333; --head:#272727; --teal:#245959;
+  --box:#E4E8E8; --rule:#D3DBDB; --white:#fff;
+  --sans:'Source Sans 3','Source Sans Pro','Helvetica Neue',Arial,sans-serif;
+  --mono:Menlo,Monaco,Consolas,'DejaVu Sans Mono',monospace;
+  --tse:#3A2E25; --tse-off:#F1EDE2;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.6}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.wrap{max-width:1060px;margin:0 auto;padding:0 30px}
+
+/* ----- The Service Edit's frame, not part of the design ----- */
+.concept{background:var(--tse);color:var(--tse-off);font-size:13px;font-weight:400;line-height:1.4}
+.concept .wrap{display:flex;gap:16px;align-items:center;justify-content:space-between;padding-top:9px;padding-bottom:9px}
+.concept p{margin:0}
+.concept b{font-weight:600}
+.concept button{flex:none;background:transparent;border:1px solid #BFB4A3;color:var(--tse-off);padding:5px 12px;border-radius:999px;font-size:12px;font-weight:400}
+.concept button[aria-pressed="true"]{background:var(--tse-off);color:var(--tse)}
+.note{display:none;margin:0 0 16px;padding:2px 0 2px 12px;border-left:2px solid #BFB4A3;color:#6B5F54;font-size:14px;font-weight:400;font-style:italic;line-height:1.45;max-width:52ch}
+body.notes .note{display:block}
+.confirm{color:var(--teal);font-style:italic;font-weight:400;border-bottom:1px dotted var(--teal);white-space:nowrap}
+
+/* ----- Barrio's own small capitals ----- */
+.caps{font-size:12px;font-weight:400;letter-spacing:2px;text-transform:uppercase;line-height:1.4}
+.caps.tiny{font-size:10px;letter-spacing:3px}
+.link{background:none;border:0;padding:0;color:var(--teal);font-size:12px;font-weight:400;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid currentColor;line-height:1.7}
+.btn{display:inline-block;background:var(--head);color:var(--white);border:1px solid var(--head);padding:15px 30px;font-size:13px;font-weight:400;letter-spacing:2px;text-transform:uppercase;line-height:1;text-decoration:none}
+.btn:hover{background:#000}
+.btn.sm{padding:11px 16px;font-size:11px}
+.btn[disabled]{opacity:.55;cursor:default}
+.mono{font-family:var(--mono);font-size:14px;font-weight:300;line-height:1.65}
+
+/* ----- Header ----- */
+.head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 30px;padding:44px 0 26px;border-bottom:2px solid var(--white)}
+.logo{background:none;border:0;padding:0;line-height:0}
+.logo img{width:min(360px,62vw);height:auto;background:none}
+.nav{display:flex;flex-wrap:wrap;gap:8px 26px;align-items:baseline}
+.nav button{background:none;border:0;padding:0 0 3px;border-bottom:1px solid transparent}
+.nav button:hover,.nav button[aria-current="page"]{border-bottom-color:var(--ink)}
+
+/* ----- Shared ----- */
+.view{display:none}
+.view.on{display:block}
+h1,h2,h3{color:var(--head);font-weight:300;letter-spacing:1px;margin:0}
+h1{font-size:clamp(34px,4.4vw,50px);line-height:1.22}
+h2{font-size:clamp(26px,3vw,31px);line-height:1.25}
+h3{font-size:21px;line-height:1.3}
+.sec{padding:70px 0}
+.sec + .sec{border-top:2px solid var(--white)}
+.lede{margin:10px 0 0;max-width:54ch}
+.photo{background:var(--box);overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover}
+.slot{background:var(--box);display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:#5E6B6B}
+
+/* ----- Hero ----- */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.82fr);gap:60px;align-items:center;padding:60px 0 70px}
+.hero p{margin:18px 0 0;max-width:40ch}
+.ways{display:flex;flex-wrap:wrap;gap:18px 28px;align-items:center;margin-top:34px}
+.hero .photo{aspect-ratio:4/5}
+
+/* ----- The roast board ----- */
+.board{list-style:none;margin:34px 0 0;padding:0;border-top:1px solid var(--rule)}
+.board li{display:grid;grid-template-columns:64px minmax(0,1.05fr) minmax(0,1.25fr) 104px 118px;gap:8px 24px;align-items:center;padding:14px 0;border-bottom:1px solid var(--rule)}
+.board .bag{width:64px;height:64px;background:var(--box)}
+.board .bag img{width:100%;height:100%;object-fit:cover}
+.board .name{font-size:22px;letter-spacing:.5px;color:var(--head);line-height:1.2}
+.board .name button{background:none;border:0;padding:0;letter-spacing:.5px;text-align:left;border-bottom:1px solid var(--head)}
+.board .from{display:block;margin-top:5px;color:#5E6B6B}
+.board .price{font-size:16px;line-height:1.35;white-space:nowrap}
+.board .price small{display:block;font-size:13px;color:#5E6B6B}
+.board .btn{justify-self:end;white-space:nowrap}
+.foot-line{margin:22px 0 0;max-width:74ch}
+
+/* ----- Never run out, rooms, venues, noticeboard ----- */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:60px;align-items:center}
+.split .photo{aspect-ratio:3/2}
+.split .mono{margin:16px 0 0;font-size:15px}
+.split .btn{margin-top:28px}
+.rooms{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;margin-top:34px}
+.rooms .photo,.rooms .slot{aspect-ratio:3/2;margin-bottom:20px}
+.rooms p{margin:6px 0 0}
+.venues{margin:26px 0 30px;font-size:clamp(24px,3.5vw,40px);line-height:1.35;letter-spacing:.5px;color:var(--head)}
+.venues span{color:#9AA7A7}
+.notices{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:60px;align-items:start}
+.pins{list-style:none;margin:28px 0 0;padding:0;border-top:1px solid var(--rule)}
+.pins li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--rule)}
+.pins b{font-weight:400;font-size:19px;color:var(--head);letter-spacing:.3px}
+.pins span{display:block;margin-top:4px;color:#5E6B6B}
+.pins .bag{width:64px;height:64px;background:var(--box)}
+.pins .bag img{width:100%;height:100%;object-fit:cover}
+.signup{background:var(--box);padding:44px 40px;text-align:center}
+.signup p{margin:10px 0 22px;font-size:15px}
+.signup .row{display:flex;gap:8px}
+.signup input,.form input{flex:1;min-width:0;font:inherit;font-size:15px;padding:13px 14px;border:1px solid var(--white);background:var(--white);color:var(--ink)}
+.fine{font-size:13px;font-weight:400;color:#5E6B6B;margin:14px 0 0}
+
+/* ----- Footer ----- */
+.foot{border-top:2px solid var(--white);padding:40px 0 70px;font-size:15px}
+.foot .cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
+.foot p{margin:0 0 4px}
+.foot .caps{margin-bottom:10px}
+
+/* ----- Coffee page ----- */
+.back{margin:34px 0 26px}
+.coffee{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}
+.coffee .photo{aspect-ratio:1/1}
+.coffee .origin{margin:10px 0 0;color:#5E6B6B}
+.coffee .tastes{margin:22px 0 26px;font-size:15px}
+.pick{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 14px}
+.pick button{background:transparent;border:1px solid var(--head);padding:13px 18px;font-size:12px;font-weight:400;letter-spacing:2px;text-transform:uppercase;line-height:1}
+.pick button[aria-pressed="true"]{background:var(--head);color:var(--white)}
+.coffee .btn{display:block;width:100%;text-align:center;padding:19px 20px}
+.coffee .or{margin-top:18px}
+.practical{margin:24px 0 0;font-size:13px}
+.story{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:60px;align-items:start}
+.story .mono{font-size:15px;margin:0 0 18px;max-width:60ch}
+.story h2{margin-bottom:22px}
+.facts{margin:0}
+.facts div{display:grid;grid-template-columns:9.5em 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--rule)}
+.facts div:first-child{border-top:1px solid var(--rule)}
+.facts dt{color:#5E6B6B;padding-top:3px}
+.facts dd{margin:0}
+.also{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px;margin-top:8px}
+.also .board li{grid-template-columns:64px minmax(0,1fr) auto}
+
+/* ----- Subscribe ----- */
+.sub-head{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.7fr);gap:60px;align-items:center;padding:56px 0 66px}
+.sub-head .photo{aspect-ratio:1/1}
+.plans{list-style:none;margin:28px 0 0;padding:0;border-top:1px solid var(--rule)}
+.plans li{border-bottom:1px solid var(--rule)}
+.plans button{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;align-items:center;width:100%;background:none;border:0;padding:22px 16px;text-align:left}
+.plans button[aria-pressed="true"]{background:var(--white)}
+.plans .dot{width:16px;height:16px;border:1px solid var(--head);border-radius:50%}
+.plans button[aria-pressed="true"] .dot{background:var(--head);box-shadow:inset 0 0 0 3px var(--white)}
+.plans .size{font-size:24px;letter-spacing:.5px;color:var(--head);line-height:1.2}
+.plans .who{display:block;margin-top:4px;color:#5E6B6B;font-size:15px}
+.plans .cost{font-size:17px;white-space:nowrap}
+.choose{display:flex;flex-wrap:wrap;gap:22px 30px;align-items:center;justify-content:space-between;margin-top:28px}
+.choose .pick{margin:0}
+.choose p{margin:0;font-size:19px;color:var(--head)}
+.next{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-top:30px;counter-reset:step}
+.next div{border-top:1px solid var(--rule);padding-top:16px}
+.next div::before{counter-increment:step;content:counter(step);display:block;font-size:12px;font-weight:400;letter-spacing:2px;color:#5E6B6B;margin-bottom:6px}
+.next p{margin:8px 0 0}
+.plain{list-style:none;margin:26px 0 0;padding:0;border-top:1px solid var(--rule);max-width:720px}
+.plain li{padding:16px 0;border-bottom:1px solid var(--rule)}
+.plain b{display:block;font-weight:400;font-size:19px;color:var(--head);letter-spacing:.3px}
+
+/* ----- Wholesale ----- */
+.banner{aspect-ratio:3/1;margin-top:40px}
+.ws-head{padding:50px 0 60px}
+.ws-head p{margin:16px 0 0;max-width:60ch}
+.ws{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:60px;align-items:start}
+.ws .venues{font-size:clamp(22px,2.6vw,30px);margin-bottom:54px}
+.max{background:var(--box);padding:40px 36px}
+.max .phone{font-size:30px;letter-spacing:1px;color:var(--head);margin:14px 0 4px}
+.form{display:grid;gap:14px;margin-top:26px}
+.form label{display:grid;gap:6px}
+.form .btn{text-align:center}
+
+@media (max-width:820px){
+  .wrap{padding:0 20px}
+  .head{padding:30px 0 20px}
+  .nav{gap:6px 18px}
+  .hero,.split,.rooms,.notices,.coffee,.story,.sub-head,.ws,.also{grid-template-columns:minmax(0,1fr);gap:30px}
+  .hero{padding:36px 0 50px}
+  .hero .photo{aspect-ratio:3/2;order:-1}
+  .sec{padding:50px 0}
+  .board li,.also .board li{grid-template-columns:56px minmax(0,1fr) auto;gap:6px 14px;padding:16px 0}
+  .board .bag{width:56px;height:56px;grid-row:span 2;align-self:start}
+  .board .name{grid-column:2 / -1}
+  .board .tastes{grid-column:2 / -1}
+  .board .price{grid-column:1 / 3;margin-top:6px}
+  .board .btn{margin-top:6px}
+  .also .board .name{grid-column:2 / -1}
+  .also .board .btn{grid-column:1 / -1;justify-self:start}
+  .coffee .photo{order:2}
+  .sub-head{padding:36px 0 46px}
+  .sub-head .photo{max-width:280px}
+  .plans button{grid-template-columns:auto minmax(0,1fr);gap:6px 14px;padding:18px 10px}
+  .plans .cost{grid-column:2}
+  .next,.foot .cols{grid-template-columns:minmax(0,1fr);gap:22px}
+  .signup{padding:34px 22px}
+  .signup .row{flex-direction:column}
+  .banner{aspect-ratio:16/9;margin-top:26px}
+  .concept .wrap{align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<div class="concept" role="note">
+  <div class="wrap">
+    <p><b>A website concept for Barrio Collective, by The Service Edit.</b> Not Barrio's live site. Nothing here can be bought. Dotted "to confirm" marks are facts only Barrio can supply.</p>
+    <button type="button" id="notesToggle" aria-pressed="false">Design notes: off</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="head">
+    <button type="button" class="logo" data-go="home"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1454292459869-4P1W366FAMB1VEFWV01H/BARRIO+black+horizontal_7cmlong.png?format=750w" alt="Barrio" width="827" height="166"></button>
+    <nav class="nav caps" aria-label="Barrio">
+      <button type="button" class="caps" data-go="home" data-anchor="board">Coffee</button>
+      <button type="button" class="caps" data-go="subscribe">Subscribe</button>
+      <button type="button" class="caps" data-go="home" data-anchor="rooms">Visit</button>
+      <button type="button" class="caps" data-go="wholesale">Wholesale</button>
+      <span aria-live="polite">Cart (<span id="cartCount">0</span>)</span>
+    </nav>
+  </header>
+</div>
+
+<!-- ============================== HOME ============================== -->
+<main class="view on" id="view-home">
+  <div class="wrap">
+    <section class="hero">
+      <div>
+        <p class="note">Today the homepage has no words. This is one line from your own Instagram bio, then three ways in.</p>
+        <h1>Coffee roaster and neighbourhood coffee bar since 2015.</h1>
+        <p>Braddon and Dairy Road, Canberra. Every bean is roasted at Dairy Road on a 1950 Probat L5.</p>
+        <div class="ways">
+          <button type="button" class="btn" data-go="home" data-anchor="board">Buy beans</button>
+          <button type="button" class="link" data-go="subscribe">Subscribe</button>
+          <button type="button" class="link" data-go="wholesale">Wholesale</button>
+        </div>
+      </div>
+      <div class="photo"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1575933779303-M9RUY6UZ8ECUGY9BZHW7/STGEORGE-barrio-20190725-5541-HR.jpg?format=1000w" alt="The Braddon bar, looking out through the Barrio sign on the window"></div>
+    </section>
+
+    <section class="sec" id="board" aria-labelledby="board-h">
+      <p class="note">The shop, on the homepage. Your bag photos, tasting notes where people choose, and a cart so two bags is as easy as one.</p>
+      <h2 id="board-h">On the roaster this week</h2>
+      <ul class="board">
+        <li>
+          <div class="bag"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/e63f9838-808a-41bb-b513-a4b77562205b/peru+%281%29.png?format=300w" alt=""></div>
+          <div class="name">Seasonal Espresso<span class="from caps tiny">Colombia, Peru, Ethiopia</span></div>
+          <div class="tastes mono">Dark chocolate, vanilla, toasted almond, dried apricot</div>
+          <div class="price">250g $24<small>500g $40, 1kg $75</small></div>
+          <button type="button" class="btn sm" data-add>Add 250g</button>
+        </li>
+        <li>
+          <div class="bag"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1709073313235-1V9WGHPXL4XVVO9ENU0N/ethiopia.png?format=300w" alt=""></div>
+          <div class="name"><button type="button" data-go="coffee">Mr. Bekele Gemeda</button><span class="from caps tiny">Washed Ethiopia</span></div>
+          <div class="tastes mono">Nectarine, kiwi fruit, honey</div>
+          <div class="price">250g $27<small>1kg $78</small></div>
+          <button type="button" class="btn sm" data-add>Add 250g</button>
+        </li>
+        <li>
+          <div class="bag"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/0d444153-2f6f-4514-bced-950370699a1d/guatemala+.png?format=300w" alt=""></div>
+          <div class="name">Finca Calahute<span class="from caps tiny">Washed Guatemala</span></div>
+          <div class="tastes mono">Vanilla, stone fruit, green apple, chocolate</div>
+          <div class="price">250g $27<small>1kg $80</small></div>
+          <button type="button" class="btn sm" data-add>Add 250g</button>
+        </li>
+        <li>
+          <div class="bag"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1707269445795-3M0VC1YA9CS7LHZTBAXK/colombia.png?format=300w" alt=""></div>
+          <div class="name">La Union<span class="from caps tiny">Washed Colombia</span></div>
+          <div class="tastes mono">Dark chocolate, raspberry, stonefruit, black tea</div>
+          <div class="price">250g $24<small>1kg $75</small></div>
+          <button type="button" class="btn sm" data-add>Add 250g</button>
+        </li>
+        <li>
+          <div class="bag"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1707269445795-3M0VC1YA9CS7LHZTBAXK/colombia.png?format=300w" alt=""></div>
+          <div class="name">China Alta<span class="from caps tiny">Washed Colombia</span></div>
+          <div class="tastes mono">Apricot, caramel, vanilla, black tea</div>
+          <div class="price">250g $24<small>1kg $75</small></div>
+          <button type="button" class="btn sm" data-add>Add 250g</button>
+        </li>
+        <li>
+          <div class="bag"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/e4efbd8e-5a07-410a-b603-448ba713d0a7/peru.png?format=300w" alt=""></div>
+          <div class="name">Gallito de las Rocas<span class="from caps tiny">Washed Peru</span></div>
+          <div class="tastes mono">Toasted almond, stone fruit, brown sugar, dark chocolate</div>
+          <div class="price">250g $24<small>1kg $75</small></div>
+          <button type="button" class="btn sm" data-add>Add 250g</button>
+        </li>
+        <li>
+          <div class="bag"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1707269199123-CMKFQQF8L604U2T07MBD/decaf.png?format=300w" alt=""></div>
+          <div class="name">Good Decaf<span class="from caps tiny">Sugar cane decaf, Colombia</span></div>
+          <div class="tastes mono">Honey, caramel, strawberry</div>
+          <div class="price">250g $24<small>500g $42, 1kg $75</small></div>
+          <button type="button" class="btn sm" data-add>Add 250g</button>
+        </li>
+      </ul>
+      <p class="foot-line mono">Whole beans <span class="confirm">to confirm</span>. Roasted on <span class="confirm">days to confirm</span>, posted on <span class="confirm">days to confirm</span>. Postage from <span class="confirm">$ to confirm</span>.</p>
+    </section>
+
+    <section class="sec" aria-labelledby="never-h">
+      <div class="split">
+        <div class="photo"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1566982123133-399QYK2EVYTONQK2WJ0G/STGEORGE-barrio-20190725-5834-HR.jpg?format=1000w" alt="Bags of Barrio coffee on the shelf in Braddon"></div>
+        <div>
+          <p class="note">Subscriptions get their first mention outside the menu.</p>
+          <h2 id="never-h">Never run out</h2>
+          <p class="lede">A fresh bag every fortnight. Espresso or filter roast, and always something we love drinking.</p>
+          <p class="mono">250g $25. 500g $40. A kilo of Seasonal Espresso $70.</p>
+          <button type="button" class="btn" data-go="subscribe">See how it works</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="rooms" aria-labelledby="rooms-h">
+      <p class="note">Dairy Road gets a proper introduction, and both venues carry one address and one set of hours.</p>
+      <h2 id="rooms-h">Two rooms</h2>
+      <div class="rooms">
+        <div>
+          <div class="photo"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1566980139927-WR9KBZYXLNKGZC2GTAT0/STGEORGE-barrio-20190725-6007-HR.jpg?format=1000w" alt="Pouring a filter coffee at the Braddon bar"></div>
+          <h3>Braddon</h3>
+          <p>59/30 Lonsdale Street, Ori Building</p>
+          <p>Monday to Friday 7am to 2pm<br>Saturday and Sunday 8am to 2pm</p>
+        </div>
+        <div>
+          <div class="slot caps tiny">New photo needed: the Dairy Road espresso bar</div>
+          <h3>Dairy Road</h3>
+          <p>Unit 6, Building 3, 1 Dairy Road, Fyshwick</p>
+          <p>The roastery, with its own espresso bar. Hours <span class="confirm">to confirm</span>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="pour-h">
+      <p class="note">Your best proof, given room. It sells wholesale without a sales pitch.</p>
+      <h2 id="pour-h">Pouring Barrio</h2>
+      <p class="venues">Rebel Rebel<span>,</span> Ainslie IGA<span>,</span> Pilot<span>,</span> Sandoochie<span>,</span> Dada<span>,</span> Intra<span>,</span> Cork Street Cafe<span>,</span> Under Bakery<span>,</span> Such and Such<span>,</span> Saint Elmo<span>,</span> Bond Barista<span>.</span></p>
+      <button type="button" class="link" data-go="wholesale">Want it on your bar? Talk to Max</button>
+    </section>
+
+    <section class="sec" aria-labelledby="notice-h">
+      <div class="notices">
+        <div>
+          <p class="note">What is already on your Instagram, on the site. And a reason to sign up that only Barrio can offer.</p>
+          <h2 id="notice-h">Noticeboard</h2>
+          <ul class="pins">
+            <li><div><b>Neighbourhood Book Club at Barrio</b><span>Friday 20 November, 6pm</span></div></li>
+            <li><div><b>New on the shelf: Mr. Bekele Gemeda</b><span>A single producer lot from Worka Village, Ethiopia</span></div><div class="bag"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1709073313235-1V9WGHPXL4XVVO9ENU0N/ethiopia.png?format=300w" alt=""></div></li>
+            <li><div><b>Sawpit cups are back soon</b><span>Join the list and you'll hear first</span></div><div class="bag"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1688430437324-WF7R1EGFELE40OKDNRDO/BARRIO_pewpewstudio_230630__+56_LR.jpg?format=300w" alt=""></div></li>
+          </ul>
+        </div>
+        <div class="signup">
+          <h2>New coffees and cup restocks, first</h2>
+          <p>One short email when something lands. Nothing else.</p>
+          <div class="row">
+            <input type="email" placeholder="Email Address" aria-label="Email address" disabled>
+            <button type="button" class="btn" disabled>Sign up</button>
+          </div>
+          <p class="fine">Switched off in this concept.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- ============================== COFFEE PAGE ============================== -->
+<main class="view" id="view-coffee">
+  <div class="wrap">
+    <div class="back"><button type="button" class="link" data-go="home" data-anchor="board">Back to shop</button></div>
+    <div class="coffee">
+      <div class="photo"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1709073313235-1V9WGHPXL4XVVO9ENU0N/ethiopia.png?format=1000w" alt="A bag of Barrio's Ethiopia"></div>
+      <div>
+        <p class="note">Everything needed to buy sits on the first screen. Today the button is about three screens down on a phone, white on pale grey.</p>
+        <h1>Mr. Bekele Gemeda</h1>
+        <p class="origin caps">Washed Ethiopia</p>
+        <p class="tastes mono">Nectarine<br>Kiwi fruit<br>Honey<br>Silky and perfumed</p>
+        <div class="pick" role="group" aria-label="Weight" id="sizePick">
+          <button type="button" aria-pressed="true" data-size="250g" data-price="27">250g $27</button>
+          <button type="button" aria-pressed="false" data-size="1kg" data-price="78">1kg $78</button>
+        </div>
+        <button type="button" class="btn" id="coffeeAdd" data-add>Add 250g to cart</button>
+        <p class="or"><button type="button" class="link" data-go="subscribe">Or get a fresh bag every fortnight</button></p>
+        <p class="practical mono">Whole beans <span class="confirm">to confirm</span>. Roasted on <span class="confirm">days to confirm</span>, posted on <span class="confirm">days to confirm</span>. Postage from <span class="confirm">$ to confirm</span>.</p>
+      </div>
+    </div>
+
+    <section class="sec" style="margin-top:70px;border-top:2px solid #fff" aria-labelledby="story-h">
+      <div class="story">
+        <div>
+          <p class="note">Your story stays word for word, in the same typewriter face it has today. The text here is a summary standing in for it.</p>
+          <h2 id="story-h">"All Sam's coffee wishes have come true!"</h2>
+          <p class="mono">A washed, single producer lot from Ethiopia, and a big deal at Barrio. Ethiopian coffee can usually be traced only as far as the washing station, where many small growers deliver together.</p>
+          <p class="mono">Cafe Imports' Single Farmer Project changed that. Mr Bekele Gemeda farms 6.5 hectares in Worka Village with several of his 11 children, and this coffee showed well enough in the cup to be sold as a lot of its own.</p>
+        </div>
+        <dl class="facts mono">
+          <div><dt>Producer</dt><dd>Mr. Bekele Gemeda</dd></div>
+          <div><dt>Place</dt><dd>Worka Village, Ethiopia</dd></div>
+          <div><dt>Process</dt><dd>Washed</dd></div>
+          <div><dt>V60, one big mug</dt><dd>20g coffee ground coarse, 350g water. Bloom with 60g, then pour in stages.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="also-h">
+      <p class="note">Two more coffees, so nobody leaves with one bag for lack of an idea.</p>
+      <h2 id="also-h">Also on the shelf</h2>
+      <div class="also">
+        <ul class="board">
+          <li>
+            <div class="bag"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/0d444153-2f6f-4514-bced-950370699a1d/guatemala+.png?format=300w" alt=""></div>
+            <div class="name">Finca Calahute<span class="from caps tiny">Washed Guatemala</span></div>
+            <button type="button" class="btn sm" data-add>Add 250g $27</button>
+          </li>
+        </ul>
+        <ul class="board">
+          <li>
+            <div class="bag"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1707269445795-3M0VC1YA9CS7LHZTBAXK/colombia.png?format=300w" alt=""></div>
+            <div class="name">China Alta<span class="from caps tiny">Washed Colombia</span></div>
+            <button type="button" class="btn sm" data-add>Add 250g $24</button>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- ============================== SUBSCRIBE ============================== -->
+<main class="view" id="view-subscribe">
+  <div class="wrap">
+    <div class="sub-head">
+      <div>
+        <p class="note">One page that explains the subscription before it asks for anything. Today it is three listings with a line each.</p>
+        <h1>Fresh roasted coffee, delivered every fortnight.</h1>
+        <p class="lede">We pick a coffee we love drinking, roast it at Dairy Road and post it to you every two weeks. You choose the size, and whether you brew espresso or filter.</p>
+      </div>
+      <div class="photo"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/e63f9838-808a-41bb-b513-a4b77562205b/peru+%281%29.png?format=750w" alt="A bag of Barrio's Seasonal Blend"></div>
+    </div>
+
+    <section class="sec" style="border-top:2px solid #fff" aria-labelledby="plans-h">
+      <h2 id="plans-h">Pick your size</h2>
+      <ul class="plans">
+        <li><button type="button" aria-pressed="true" data-plan="250g" data-cost="25"><span class="dot"></span><span><span class="size">250g</span><span class="who">One bag, one coffee drinker</span></span><span class="cost">$25 every 2 weeks</span></button></li>
+        <li><button type="button" aria-pressed="false" data-plan="500g" data-cost="40"><span class="dot"></span><span><span class="size">500g</span><span class="who">For a house that brews every morning</span></span><span class="cost">$40 every 2 weeks</span></button></li>
+        <li><button type="button" aria-pressed="false" data-plan="1kg Seasonal Espresso" data-cost="70"><span class="dot"></span><span><span class="size">1kg Seasonal Espresso</span><span class="who">Big households and small offices</span></span><span class="cost">$70 every 2 weeks</span></button></li>
+      </ul>
+      <p class="note" style="margin-top:26px">The price is said once, with postage, so it never looks dearer than buying a bag.</p>
+      <div class="choose">
+        <div class="pick" role="group" aria-label="Coffee style" id="roastPick">
+          <button type="button" aria-pressed="true" data-roast="espresso">Espresso</button>
+          <button type="button" aria-pressed="false" data-roast="filter">Filter</button>
+        </div>
+        <p id="subSummary">250g, espresso, $25 every 2 weeks</p>
+        <button type="button" class="btn" disabled>Subscribe</button>
+      </div>
+      <p class="practical mono">Postage <span class="confirm">included or extra, to confirm</span>. The button is switched off in this concept.</p>
+    </section>
+
+    <section class="sec" aria-labelledby="next-h">
+      <h2 id="next-h">What happens next</h2>
+      <div class="next">
+        <div><h3>We roast</h3><p>Your coffee is roasted at Dairy Road on <span class="confirm">days to confirm</span>.</p></div>
+        <div><h3>We post</h3><p>It goes in the post on <span class="confirm">days to confirm</span>, every fortnight.</p></div>
+        <div><h3>We tell you what's coming</h3><p>A short note each month on what's in your next bag and who grew it.</p></div>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="q-h">
+      <p class="note">The three questions that stop people subscribing, answered before they ask.</p>
+      <h2 id="q-h">Good to know</h2>
+      <ul class="plain">
+        <li><b>Going away?</b>Email us and we'll hold your next bag until you're back.</li>
+        <li><b>Want to stop?</b>Cancel any time from your account.</li>
+        <li><b>Giving it as a present?</b>Three months of Barrio, six bags, paid once. <span class="confirm">if Barrio offers it</span></li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<!-- ============================== WHOLESALE ============================== -->
+<main class="view" id="view-wholesale">
+  <div class="wrap">
+    <div class="photo banner"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/9f3cffba-bea8-4df5-95c3-8eb7536e8339/tempImageCYqaTm.jpg?format=1500w" alt="Sacks of green coffee at Barrio"></div>
+    <div class="ws-head">
+      <h1>Wholesale</h1>
+      <p>We are committed to sourcing and roasting quality coffees and sharing that with communities. We offer custom blends as well as seasonal blends and single origins, for espresso and filter.</p>
+    </div>
+
+    <section class="sec" style="border-top:2px solid #fff" aria-labelledby="ws-h">
+      <div class="ws">
+        <div>
+          <p class="note">Your own words stay. The venue list does the persuading, and what a venue gets is spelled out once Max confirms it.</p>
+          <h2 id="ws-h">Who's pouring it</h2>
+          <p class="venues">Rebel Rebel<span>,</span> Ainslie IGA<span>,</span> Pilot<span>,</span> Sandoochie<span>,</span> Dada<span>,</span> Intra<span>,</span> Cork Street Cafe<span>,</span> Under Bakery<span>,</span> Such and Such<span>,</span> Saint Elmo<span>,</span> Bond Barista<span>.</span></p>
+          <h2>What you get</h2>
+          <ul class="plain">
+            <li><b>Coffee built for your venue</b>A custom blend, our seasonal blend, or single origins.</li>
+            <li><b>Training</b><span class="confirm">to confirm with Max</span></li>
+            <li><b>Help with your machine and grinder</b><span class="confirm">to confirm with Max</span></li>
+            <li><b>Delivery</b><span class="confirm">days and area to confirm with Max</span></li>
+            <li><b>A tasting at Dairy Road</b>Come and drink it where it's roasted. <span class="confirm">to confirm with Max</span></li>
+          </ul>
+        </div>
+        <div class="max">
+          <p class="note">Max's number stays. The form is for the owner browsing at 10pm.</p>
+          <h2>Talk to Max</h2>
+          <p style="margin:8px 0 0">Head roaster and wholesale director</p>
+          <p class="phone">0478 691 197</p>
+          <p class="fine" style="margin-top:0">Or leave your details and he'll ring you.</p>
+          <form class="form" onsubmit="return false">
+            <label><span class="caps tiny">Venue name</span><input type="text" disabled></label>
+            <label><span class="caps tiny">Suburb</span><input type="text" disabled></label>
+            <label><span class="caps tiny">Open now, or opening when?</span><input type="text" disabled></label>
+            <label><span class="caps tiny">Rough kilos a week</span><input type="text" disabled></label>
+            <label><span class="caps tiny">Your phone number</span><input type="tel" disabled></label>
+            <button type="button" class="btn" disabled>Send to Max</button>
+            <p class="fine">Switched off in this concept.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="cols">
+      <div><p class="caps">Braddon</p><p>59/30 Lonsdale Street, Braddon ACT 2612</p><p>Mon to Fri 7am to 2pm, Sat and Sun 8am to 2pm</p></div>
+      <div><p class="caps">Dairy Road</p><p>Unit 6, Building 3, 1 Dairy Road, Fyshwick ACT</p><p>Hours <span class="confirm">to confirm</span></p></div>
+      <div><p class="caps">Say hello</p><p>admin@barriocollective.com</p><p>Instagram @barriocc</p><p style="margin-top:14px" class="fine">All photos by Ash St George and pew pew studio, from Barrio's current site.</p></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var views = ['home','coffee','subscribe','wholesale'];
+  function go(name, anchor){
+    if (views.indexOf(name) < 0) name = 'home';
+    views.forEach(function(v){ document.getElementById('view-' + v).classList.toggle('on', v === name); });
+    document.querySelectorAll('.nav button').forEach(function(b){
+      var match = name !== 'home' && b.getAttribute('data-go') === name;
+      if (match) b.setAttribute('aria-current','page'); else b.removeAttribute('aria-current');
+    });
+    var target = anchor ? document.getElementById(anchor) : null;
+    if (target) target.scrollIntoView(); else window.scrollTo(0, 0);
+  }
+  function press(group, chosen){
+    group.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed', b === chosen ? 'true' : 'false'); });
+  }
+  document.addEventListener('click', function(ev){
+    var el = ev.target.closest('[data-go]');
+    if (el) { go(el.getAttribute('data-go'), el.getAttribute('data-anchor')); return; }
+
+    var add = ev.target.closest('[data-add]');
+    if (add) {
+      var count = document.getElementById('cartCount');
+      count.textContent = String(Number(count.textContent) + 1);
+      var label = add.textContent;
+      add.textContent = 'Added';
+      add.disabled = true;
+      setTimeout(function(){ add.textContent = label; add.disabled = false; }, 1100);
+      return;
+    }
+
+    var size = ev.target.closest('#sizePick button');
+    if (size) {
+      press(size.parentNode, size);
+      document.getElementById('coffeeAdd').textContent = 'Add ' + size.getAttribute('data-size') + ' to cart';
+      return;
+    }
+
+    var plan = ev.target.closest('.plans button');
+    var roast = ev.target.closest('#roastPick button');
+    if (plan || roast) {
+      if (plan) press(plan.closest('.plans'), plan); else press(roast.parentNode, roast);
+      var p = document.querySelector('.plans button[aria-pressed="true"]');
+      var r = document.querySelector('#roastPick button[aria-pressed="true"]');
+      var kilo = p.getAttribute('data-cost') === '70';
+      document.getElementById('roastPick').style.visibility = kilo ? 'hidden' : 'visible';
+      document.getElementById('subSummary').textContent =
+        p.getAttribute('data-plan') + (kilo ? '' : ', ' + r.getAttribute('data-roast')) + ', $' + p.getAttribute('data-cost') + ' every 2 weeks';
+    }
+  });
+
+  var toggle = document.getElementById('notesToggle');
+  toggle.addEventListener('click', function(){
+    var on = document.body.classList.toggle('notes');
+    toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+    toggle.textContent = 'Design notes: ' + (on ? 'on' : 'off');
+  });
+})();
+</script>
+</body>
+</html>
