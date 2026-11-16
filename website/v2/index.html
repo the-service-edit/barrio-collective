@@ -278,8 +278,9 @@ a.link{text-decoration:none;white-space:nowrap}
 .btn.light:hover{background:#E4E8E8}
 .link.light{color:var(--white)}
 .feat-fine{margin:18px 0 0;font-size:14px;color:#AEBBBB}
-.feature-photo{background:#E7E7E7;min-height:620px}
-.feature-photo img{width:100%;height:100%;object-fit:cover}
+.feature-photo{position:relative;background:#E7E7E7;min-height:620px}
+.feature-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.feature.wordy .feature-photo,.feature.product .feature-photo{min-height:540px}
 
 .band-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 70px;align-items:end}
 .band-head .start{margin:0;max-width:46ch}
@@ -301,8 +302,8 @@ a.link{text-decoration:none;white-space:nowrap}
 .band .foot-line{margin-top:54px}
 
 .halves{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);background:var(--paper)}
-.halves-photo{min-height:640px;background:var(--box)}
-.halves-photo img{width:100%;height:100%;object-fit:cover}
+.halves-photo{position:relative;min-height:640px;background:var(--box)}
+.halves-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .halves-text{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:80px max(30px,calc((100vw - 1060px) / 2 + 30px)) 80px clamp(30px,6vw,90px)}
 .halves-text .lede{margin-top:14px;max-width:36ch}
 .rates{list-style:none;margin:34px 0 36px;padding:0;width:100%;max-width:420px;border-top:1px solid var(--rule)}
@@ -337,6 +338,34 @@ a.link{text-decoration:none;white-space:nowrap}
   .cups-row{gap:30px}
   .rooms-wide{grid-template-columns:minmax(0,1fr);gap:40px;padding:0 20px;margin-top:36px}
   .band .foot-line{margin-top:36px}
+}
+
+/* ----- Version 2 inner pages ----- */
+.feature.wordy h1{font-size:clamp(38px,4.6vw,64px);line-height:1.06}
+.feature.product h1{font-size:clamp(40px,5vw,70px);line-height:1.04;margin-top:0}
+.feature .lede{margin:24px 0 0;max-width:42ch;color:#DCE3E3}
+.feature .back{margin:0 0 34px}
+.feature.product .feat-notes{margin-top:28px}
+.pick.light{margin:32px 0 12px}
+.pick.light button{border-color:var(--white);color:var(--white)}
+.pick.light button[aria-pressed="true"]{background:var(--white);color:var(--head)}
+.feature .lasts{margin:0;color:#AEBBBB}
+.feature.product .feat-buy{margin-top:26px}
+.feature .practical{color:#AEBBBB;margin-top:30px}
+.feature .confirm,.max .confirm{color:#A9D6D6;border-bottom-color:#A9D6D6}
+.view > .wrap > .sec h2{font-size:clamp(28px,3.2vw,40px);line-height:1.18}
+.view > .wrap > .sec h2.sub{font-size:12px}
+.max{background:var(--head);color:#DCE3E3}
+.max h2,.max .phone{color:var(--white)}
+.max .fine{color:#AEBBBB}
+.max .note{color:#D6CCBD;border-left-color:#8F8273}
+.max .asline b{color:var(--white);border-bottom-color:var(--white)}
+.max .btn{background:var(--white);color:var(--head);border-color:var(--white)}
+#cfAlso{margin-top:40px}
+@media (max-width:820px){
+  .feature.wordy .feature-photo,.feature.product .feature-photo{min-height:0;aspect-ratio:4 / 3}
+  .feature.product h1,.feature.wordy h1{font-size:38px}
+  .feature .back{margin-bottom:22px}
 }
 </style>
 </head>
@@ -494,24 +523,26 @@ a.link{text-decoration:none;white-space:nowrap}
 
 <!-- ============================== COFFEE PAGE ============================== -->
 <main class="view" id="view-coffee">
-  <div class="wrap">
-    <div class="back"><button type="button" class="link" data-go="home" data-anchor="board">Back to shop</button></div>
-    <div class="coffee">
-      <div class="photo"><img id="cfImg" alt=""></div>
-      <div>
-        <p class="note">Everything needed to buy sits on the first screen. Today the button is about three screens down on a phone, white on pale grey.</p>
-        <h1 id="cfName"></h1>
-        <p class="origin caps" id="cfOrigin"></p>
-        <p class="tastes mono" id="cfNotes"></p>
-        <div class="pick" role="group" aria-label="Weight" id="sizePick"></div>
-        <p class="lasts" id="cfLasts"></p>
-        <button type="button" class="btn" id="coffeeAdd" data-add>Add to cart</button>
-        <p class="or"><button type="button" class="link" data-go="subscribe">Or get a fresh bag every fortnight</button></p>
-        <p class="practical mono">Whole beans <span class="confirm">to confirm</span>. Roasted on <span class="confirm">days to confirm</span>, posted on <span class="confirm">days to confirm</span>. Postage from <span class="confirm">$ to confirm</span>.</p>
+  <section class="feature product">
+    <div class="feature-text">
+      <p class="back"><button type="button" class="link light" data-go="home" data-anchor="board">Back to shop</button></p>
+      <p class="note">Everything needed to buy sits on the first screen. Today the button is about three screens down on a phone, white on pale grey.</p>
+      <h1 id="cfName"></h1>
+      <p class="caps tiny feat-origin" id="cfOrigin"></p>
+      <p class="mono feat-notes" id="cfNotes"></p>
+      <div class="pick light" role="group" aria-label="Weight" id="sizePick"></div>
+      <p class="lasts" id="cfLasts"></p>
+      <div class="feat-buy">
+        <button type="button" class="btn light" id="coffeeAdd" data-add>Add to cart</button>
+        <button type="button" class="link light" data-go="subscribe">Or a fresh bag every fortnight</button>
       </div>
+      <p class="practical mono">Whole beans <span class="confirm">to confirm</span>. Roasted on <span class="confirm">days to confirm</span>, posted on <span class="confirm">days to confirm</span>. Postage from <span class="confirm">$ to confirm</span>.</p>
     </div>
+    <div class="feature-photo"><img id="cfImg" alt=""></div>
+  </section>
+  <div class="wrap">
 
-    <section class="sec" style="margin-top:70px;border-top:2px solid #fff" aria-labelledby="story-h">
+    <section class="sec" style="border-top:0" aria-labelledby="story-h">
       <div class="story">
         <div>
           <p class="note">Your story stays word for word, in the same typewriter face it has today. The text here is a summary standing in for it.</p>
@@ -523,26 +554,27 @@ a.link{text-decoration:none;white-space:nowrap}
     </section>
 
     <section class="sec" aria-labelledby="also-h">
-      <p class="note">Two more coffees, so nobody leaves with one bag for lack of an idea.</p>
+      <p class="note">Three more coffees, so nobody leaves with one bag for lack of an idea.</p>
       <h2 id="also-h">Also on the shelf</h2>
-      <div class="also" id="cfAlso"></div>
+      <ul class="tiles" id="cfAlso"></ul>
     </section>
   </div>
 </main>
 
 <!-- ============================== SUBSCRIBE ============================== -->
 <main class="view" id="view-subscribe">
-  <div class="wrap">
-    <div class="sub-head">
-      <div>
-        <p class="note">One page that explains the subscription before it asks for anything. Today it is three listings with a line each.</p>
-        <h1>Fresh roasted coffee, delivered every fortnight.</h1>
-        <p class="lede">We pick a coffee we love drinking, roast it at Dairy Road and post it to you every two weeks. You choose the size, and whether you brew espresso or filter.</p>
-      </div>
-      <div class="photo"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/e63f9838-808a-41bb-b513-a4b77562205b/peru+%281%29.png?format=750w" alt="A bag of Barrio's Seasonal Blend"></div>
+  <section class="feature wordy">
+    <div class="feature-text">
+      <p class="note">One page that explains the subscription before it asks for anything. Today it is three listings with a line each.</p>
+      <p class="caps">Subscribe</p>
+      <h1>Fresh roasted coffee, delivered every fortnight.</h1>
+      <p class="lede">We pick a coffee we love drinking, roast it at Dairy Road and post it to you every two weeks. You choose the size, and whether you brew espresso or filter.</p>
     </div>
+    <div class="feature-photo"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/e63f9838-808a-41bb-b513-a4b77562205b/peru+%281%29.png?format=1500w" alt="A bag of Barrio's Seasonal Blend"></div>
+  </section>
+  <div class="wrap">
 
-    <section class="sec" style="border-top:2px solid #fff" aria-labelledby="plans-h">
+    <section class="sec" style="border-top:0" aria-labelledby="plans-h">
       <h2 id="plans-h">Pick your size</h2>
       <ul class="plans">
         <li><button type="button" aria-pressed="true" data-plan="250g" data-cost="25"><span class="dot"></span><span><span class="size">250g</span><span class="who">One bag, one coffee drinker</span></span><span class="cost">$25 every 2 weeks</span></button></li>
@@ -584,14 +616,18 @@ a.link{text-decoration:none;white-space:nowrap}
 
 <!-- ============================== WHOLESALE ============================== -->
 <main class="view" id="view-wholesale">
-  <div class="wrap">
-    <div class="photo banner"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/9f3cffba-bea8-4df5-95c3-8eb7536e8339/tempImageCYqaTm.jpg?format=1500w" alt="Sacks of green coffee at Barrio"></div>
-    <div class="ws-head">
+  <section class="feature wordy">
+    <div class="feature-text">
+      <p class="caps">For venues, shops and offices</p>
       <h1>Wholesale</h1>
-      <p>We are committed to sourcing and roasting quality coffees and sharing that with communities. We offer custom blends as well as seasonal blends and single origins, for espresso and filter.</p>
+      <p class="lede">We are committed to sourcing and roasting quality coffees and sharing that with communities. We offer custom blends as well as seasonal blends and single origins, for espresso and filter.</p>
+      <p style="margin:34px 0 0"><a class="btn light" href="#talk-max">Talk to Max</a></p>
     </div>
+    <div class="feature-photo"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/9f3cffba-bea8-4df5-95c3-8eb7536e8339/tempImageCYqaTm.jpg?format=1500w" alt="Sacks of green coffee at Barrio"></div>
+  </section>
+  <div class="wrap">
 
-    <section class="sec" style="border-top:2px solid #fff" aria-labelledby="ws-h">
+    <section class="sec" style="border-top:0" aria-labelledby="ws-h">
       <div class="ws">
         <div>
           <p class="note">Your own words stay. The page now asks one question first, what do you run, and answers with venues like theirs, what they get, a tasting and what happens after they enquire. An office never needs to ring Max at all.</p>
@@ -700,14 +736,18 @@ a.link{text-decoration:none;white-space:nowrap}
 
 <!-- ============================== WHERE TO DRINK ============================== -->
 <main class="view" id="view-where">
-  <div class="wrap">
-    <div class="ws-head">
+  <section class="feature wordy">
+    <div class="feature-text">
       <p class="note">A new page. It gives drinkers somewhere to find a cup, gives every venue a link from Barrio, and is the page Google can show for "where to drink Barrio". Ask each venue to link back.</p>
+      <p class="caps">Canberra and around</p>
       <h1>Where to drink Barrio</h1>
-      <p>Our two rooms, and ten places in and around Canberra that pour or stock our coffee.</p>
+      <p class="lede">Our two rooms, and ten places in and around Canberra that pour or stock our coffee.</p>
     </div>
+    <div class="feature-photo"><img src="https://images.squarespace-cdn.com/content/v1/56aebb73356fb0d6e73a8899/1575933779303-M9RUY6UZ8ECUGY9BZHW7/STGEORGE-barrio-20190725-5541-HR.jpg?format=1500w" alt="The Braddon bar, looking out through the Barrio sign on the window"></div>
+  </section>
+  <div class="wrap">
 
-    <section class="sec" style="border-top:2px solid #fff" aria-labelledby="wr-h">
+    <section class="sec" style="border-top:0" aria-labelledby="wr-h">
       <h2 id="wr-h">Our rooms</h2>
       <ul class="where own">
         <li><div><b>Braddon</b><span class="kind">Espresso bar</span></div><div class="burb">59/30 Lonsdale Street, Ori Building</div><div class="burb">Monday to Friday 7am to 2pm<br>Saturday and Sunday 8am to 2pm</div></li>
@@ -796,9 +836,7 @@ a.link{text-decoration:none;white-space:nowrap}
     document.getElementById('cfStory').innerHTML = c.story.map(function(t){ return '<p class="mono">' + esc(t) + '</p>'; }).join('');
     document.getElementById('cfFacts').innerHTML = c.facts.map(function(f){ return '<div><dt>' + esc(f[0]) + '</dt><dd>' + esc(f[1]) + '</dd></div>'; }).join('');
     var at = COFFEES.indexOf(c);
-    document.getElementById('cfAlso').innerHTML = [1, 2].map(function(step){
-      return '<ul class="board">' + boardRow(COFFEES[(at + step) % COFFEES.length], true) + '</ul>';
-    }).join('');
+    document.getElementById('cfAlso').innerHTML = [1, 2, 3].map(function(step){ return tile(COFFEES[(at + step) % COFFEES.length]); }).join('');
     go('coffee');
   }
   function tile(c){
