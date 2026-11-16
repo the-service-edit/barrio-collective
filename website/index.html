@@ -80,20 +80,18 @@ h3{font-size:21px;line-height:1.3}
 
 /* ----- The roast board ----- */
 .board{list-style:none;margin:34px 0 0;padding:0;border-top:1px solid var(--rule)}
-.board li{display:grid;grid-template-columns:64px minmax(0,1fr) minmax(0,1.1fr) 218px 112px;gap:8px 24px;align-items:center;padding:14px 0;border-bottom:1px solid var(--rule)}
+.board li{display:grid;grid-template-columns:64px minmax(0,1.05fr) minmax(0,1.25fr) 140px 118px;gap:8px 24px;align-items:center;padding:14px 0;border-bottom:1px solid var(--rule)}
 .board .bag{width:64px;height:64px;background:var(--box)}
 .board .bag img{width:100%;height:100%;object-fit:cover}
 .board .name{font-size:22px;letter-spacing:.5px;color:var(--head);line-height:1.2}
 .board .name button{background:none;border:0;padding:0;letter-spacing:.5px;text-align:left;border-bottom:1px solid var(--head)}
 .board .from{display:block;margin-top:5px;color:#5E6B6B}
 .board .price{font-size:16px;line-height:1.35;white-space:nowrap}
-.sizes{display:flex;flex-wrap:wrap;gap:6px}
-.sizes button{background:transparent;border:1px solid var(--head);padding:9px 9px;font-size:11px;font-weight:400;letter-spacing:1px;line-height:1;white-space:nowrap}
-.sizes button[aria-pressed="true"]{background:var(--head);color:var(--white)}
+.board .price small button{background:none;border:0;padding:0;color:inherit;border-bottom:1px solid currentColor;line-height:1.3}
 .start{margin:18px 0 0;max-width:74ch}
 .start button,.also .name button{background:none;border:0;padding:0;color:var(--head);border-bottom:1px solid var(--head);letter-spacing:inherit;text-align:left}
 .lasts{margin:0 0 18px;font-size:15px;color:#5E6B6B}
-.board .price small{display:block;font-size:13px;color:#5E6B6B}
+.board .price small{display:block;margin-top:3px;font-size:13px;color:#5E6B6B}
 .board .btn{justify-self:end;white-space:nowrap}
 .foot-line{margin:22px 0 0;max-width:74ch}
 
@@ -234,7 +232,7 @@ a.link{text-decoration:none;white-space:nowrap}
   .board .bag{width:56px;height:56px;grid-row:span 2;align-self:start}
   .board .name{grid-column:2 / -1}
   .board .tastes{grid-column:2 / -1}
-  .board .sizes{grid-column:1 / 3;margin-top:8px}
+  .board .price{grid-column:1 / 3;margin-top:6px}
   .board .btn{margin-top:6px}
   .also .board .name{grid-column:2 / -1}
   .also .board .btn{grid-column:1 / -1;justify-self:start}
@@ -291,11 +289,10 @@ a.link{text-decoration:none;white-space:nowrap}
     </section>
 
     <section class="sec" id="board" aria-labelledby="board-h">
-      <p class="note">The shop, on the homepage. Your bag photos, tasting notes where people choose, every size on the row, every name opening its own page, and a cart so two bags is as easy as one.</p>
+      <p class="note">The shop, on the homepage. Your bag photos, tasting notes where people choose, one button a row, every name opening its own page where the bigger bags are, and a cart so two bags is as easy as one.</p>
       <h2 id="board-h">On the roaster this week</h2>
       <p class="start">Not sure where to start? <button type="button" data-coffee="seasonal">Seasonal Espresso</button> for the machine, <button type="button" data-coffee="calahute">Finca Calahute</button> for milk coffee, <button type="button" data-coffee="chinaalta">China Alta</button> for any brew method, <button type="button" data-coffee="decaf">Good Decaf</button> for no caffeine.</p>
       <ul class="board" id="shopBoard"></ul>
-      <p class="foot-line">A 250g bag makes about 12 coffees at 20g a cup. A kilo makes about 50 and costs less per cup. Tap a name for the full story.</p>
       <p class="foot-line mono">Whole beans <span class="confirm">to confirm</span>. Roasted on <span class="confirm">days to confirm</span>, posted on <span class="confirm">days to confirm</span>. Postage from <span class="confirm">$ to confirm</span>.</p>
     </section>
 
@@ -652,7 +649,7 @@ a.link{text-decoration:none;white-space:nowrap}
       '<div class="name"><button type="button" data-coffee="' + c.key + '">' + esc(c.name) + '</button><span class="from caps tiny">' + esc(c.origin) + '</span></div>' +
       (short ? '<button type="button" class="btn sm" data-add>Add 250g $' + c.sizes[0][1] + '</button>'
              : '<div class="tastes mono">' + esc(c.notes.join(', ').toLowerCase().replace(/^./, function(m){ return m.toUpperCase(); })) + '</div>' +
-               '<div class="sizes" role="group" aria-label="Size of ' + esc(c.name) + '">' + sizeButtons(c) + '</div>' +
+               '<div class="price">' + c.sizes[0][0] + ' $' + c.sizes[0][1] + '<small><button type="button" data-coffee="' + c.key + '">also ' + c.sizes.slice(1).map(function(z){ return z[0]; }).join(' and ') + '</button></small></div>' +
                '<button type="button" class="btn sm" data-add>Add ' + c.sizes[0][0] + '</button>') + '</li>';
   }
   function lasts(c, size, price){
@@ -709,13 +706,6 @@ a.link{text-decoration:none;white-space:nowrap}
 
     var open = ev.target.closest('[data-coffee]');
     if (open) { showCoffee(open.getAttribute('data-coffee')); return; }
-
-    var rowSize = ev.target.closest('.sizes button');
-    if (rowSize) {
-      press(rowSize.parentNode, rowSize);
-      rowSize.closest('li').querySelector('[data-add]').textContent = 'Add ' + rowSize.getAttribute('data-size');
-      return;
-    }
 
     var add = ev.target.closest('[data-add]');
     if (add) {
